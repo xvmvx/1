@@ -66,6 +66,7 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
         else
           echo " 需要在docker-compose环境中运行，正在安装docker，安装完毕请再次运行本程序"
           source /var/1/d.sh
+        fi
     ;;
     5 )
         
