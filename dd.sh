@@ -22,6 +22,7 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInputdd
     	echo  "按3     国外DD"
     	echo  "按4     综合DD"
 	echo  "按5     中文debian"
+	echo  "按6     查看密码"
     	echo "请选择要执行的操作，返回上层请按 0  退出直接回车即可"
     	read -p ">>>>>>>>>>>>>>>>" character1
     	if [ "$character1" = "1" ]; then
@@ -105,6 +106,9 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInputdd
 		apt-get -y install wps-office wps-office-fonts
 		apt-get -y install atzlinux-store-a11
 		echo "安装成功，请退出当前登录，重新登录，让安装生效。"
+	elif [ "$character1" = "6" ]; then
+		echo " 4 密码 ： IdcOffer.com " 
+		echo " 5 密码 ： wo 密码为：debian168;  root 密码为：debian-cn;168 "
         elif [ "$character1" = "0" ]; then
             source /var/1/1.sh
         else
