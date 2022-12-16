@@ -1,19 +1,7 @@
 #!/bin/bash
-
-  echo -n " 是否更新 pro 文件？ "
-  read -p ">>>>>>>>>>>>>>>>" character1
-if [ "$character1" = "y" ]; then
      rm -rf /etc/profile.d/pro.sh
-fi
-    if [ ! -d "/etc/profile.d/pro.sh" ]; then
-        mv pro.sh  /etc/profile.d/pro.sh
-    fi
-if [ ! -d "/var/1" ]; then
-  git clone https://github.com/xvmvx/1.git /var/1
-fi
-  
-  
-
+mv pro.sh  /etc/profile.d/pro.sh
+chmod +x /etc/profile.d/pro.sh
 echo "########################################"
 xitong=$(cat /etc/issue)
 IP=$(curl ip.sb)
