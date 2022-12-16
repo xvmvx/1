@@ -12,13 +12,13 @@ echo -n "-----本机公网IP是："; echo ${IP}
 echo -n "正确请按  y   不正确请按  n  >>>>>>>> "
 read character
 if [ "$character" = "y" ]; then
-    echo "EXT_IP=${IP}">>"${file}"
-    echo "FREESWITCH_DOMAIN=${IP}">>"${file}"
+    echo "EXT_IP=${IP}">>${file}
+    echo "FREESWITCH_DOMAIN=${IP}">>${file}
 elif [ "$character" = "n" ]; then
     echo "重新输入要指定的公网IP:"
     read y_name
-    echo "EXT_IP=${y_name}" >>"${file}"
-    echo "FREESWITCH_DOMAIN=${y_name}">>"${file}"
+    echo "EXT_IP=${y_name}" >>${file}
+    echo "FREESWITCH_DOMAIN=${y_name}">>${file}
 else
     echo 输入不符合要求
 fi
@@ -26,17 +26,17 @@ echo -n "-----本机内网IP是："; echo ${IP2}
 echo -n "正确请按  y   不正确请按  n  >>>>>>>> "
 read character2
 if [ "$character2" = "y" ]; then
-    echo "LOCAL_IP=${IP2}" >>"${file}"
-    echo "# xswitch-nginx use env" >>"${file}"
-    echo "HTTP_PORT=8081" >>"${file}"
-    echo "NGINX_PROXY=${IP2}" >>"${file}"
+    echo "LOCAL_IP=${IP2}" >>${file}
+    echo "# xswitch-nginx use env" >>${file}
+    echo "HTTP_PORT=8081" >>${file}
+    echo "NGINX_PROXY=${IP2}">>${file}
 elif [ "$character2" = "n" ]; then
     echo "重新输入要指定的内网IP:"
     read y_name2
-    echo "LOCAL_IP=${y_name2}" >>"${file}"
-    echo "# xswitch-nginx use env" >>"${file}"
-    echo "HTTP_PORT=8081" >>"${file}"
-    echo "NGINX_PROXY=${y_name2}" >>"${file}"
+    echo "LOCAL_IP=${y_name2}">>${file}
+    echo "# xswitch-nginx use env" >>${file}
+    echo "HTTP_PORT=8081" >>${file}
+    echo "NGINX_PROXY=${y_name2}">>${file}
 else
     echo 输入不符合要求
 fi
