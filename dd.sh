@@ -3,7 +3,7 @@ clear
 echo "##################################################"
 echo "              DD      WARP      BBR          "
 echo "=================================================="
-echo "-----  1.DD安装 DD组件 国内DD 国外DD 2.WARP "
+echo "-----  1.DD安装 DD组件 国内DD 国外DD 中文debian "
 echo "-----  2.WARP "
 echo "-----  3.BBR "
 echo "-----  4.呆梨 -XUI -make"
@@ -17,10 +17,11 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInputdd
     1 )
     	clear
     	echo  ">>>>>>>>>>>>>>>>>>"
-    	echo  "按1 安装组件"
-    	echo  "按2 国内DD"
-    	echo  "按3 国外DD"
-    	echo  "按4 综合DD"
+    	echo  "按1     安装组件"
+    	echo  "按2     国内DD"
+    	echo  "按3     国外DD"
+    	echo  "按4     综合DD"
+	echo  "按5     中文debian"
     	echo "请选择要执行的操作，返回上层请按 0  退出直接回车即可"
     	read -p ">>>>>>>>>>>>>>>>" character1
     	if [ "$character1" = "1" ]; then
@@ -69,8 +70,41 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInputdd
             	echo 输入不符合要求
             fi
         elif [ "$character1" = "4" ]; then
-            wget -N --no-check-certificate https://down.vpsaff.net/linux/dd/network-reinstall-os.sh && \
-            chmod +x network-reinstall-os.sh && ./network-reinstall-os.sh
+            	wget -N --no-check-certificate https://down.vpsaff.net/linux/dd/network-reinstall-os.sh && \
+            	chmod +x network-reinstall-os.sh && ./network-reinstall-os.sh
+	 elif [ "$character1" = "5" ]; then
+	    	apt-get -y install wget
+		wget -c -O atzlinux-v11-archive-keyring_lastest_all.deb https://www.atzlinux.com/atzlinux/pool/main/a/atzlinux-archive-keyring/atzlinux-v11-archive-keyring_lastest_all.deb
+		apt -y install ./atzlinux-v11-archive-keyring_lastest_all.deb
+		apt-get update
+		apt-get -y install xdg-utils
+		apt-get -y install xfce4-settings
+		apt-get -y install libcanberra-gtk-module
+		apt-get -y install electronic-wechat
+		apt-get -y install linuxqq
+		apt-get -y install \
+		fcitx-config-common \
+		fcitx-config-gtk \
+		fcitx-frontend-all \
+		fcitx-frontend-qt5 \
+		fcitx-googlepinyin \
+		fcitx-m17n \
+		fcitx-module-x11 \
+		fcitx-sunpinyin \
+		fcitx-table-wubi \
+		fcitx-table-wbpy \
+		fcitx-ui-classic
+		apt-get -y install sogoupinyin
+		rm -f /etc/apt/sources.list.d/sogoupinyin.list
+		apt-get -y install fonts-zh-cn-misc-atzlinux
+		apt-get -y install desktop-file-utils
+		apt-get -y install baidunetdisk
+		apt-get -y install netease-cloud-music
+		apt-get -y install app.web.youdao.dict
+		apt-get -y install ttf-mscorefonts-atzlinux
+		apt-get -y install wps-office wps-office-fonts
+		apt-get -y install atzlinux-store-a11
+		echo "安装成功，请退出当前登录，重新登录，让安装生效。"
         elif [ "$character1" = "0" ]; then
             source /var/1/1.sh
         else
