@@ -71,10 +71,12 @@ alias fin="find . -name"
 echo "=================================================="
 echo "----------          My goodway           -------- "
 echo "##################################################"
-echo "----- 修改显示信息： 1.改服务信息   2.添加到开机运行"
-echo "----- 工具及测试等： 3.运行工具箱   4.性能及视频测试"
-echo "----- 网络优化相关： 5.DD WARP BBR "
-echo "----- 常用插件软件： 6.Docker 宝塔     7.软件安装"
+echo "----- 系统： 1.集成工具   "
+echo "----- 优化： 2.性能检测 "
+echo "----- 加速： 3.DD WARP BBR "
+echo "----- 环境： 4.Docker 宝塔"
+echo "----- 依赖： 5. "
+echo "----- 应用： 6. "
 echo "=================================================="
 echo " "
 echo " "
@@ -82,28 +84,28 @@ echo "请选择要执行的操作，退出直接回车即可"
 read -p ">>>>>>>>>>>>>>>>" menuNumberInput
   case "$menuNumberInput" in
     1 )
-      	vim /var/1/1.sh
+      	source /var/1/gongju.sh
     ;;
     2 )
-    	vim /etc/profile
-    ;;
-    3 )
-    	source /var/1/gongju.sh
-    ;;
-    4 )
     	source /var/1/ceshi.sh
     ;;
+    3 )
+    	source /var/1/dd.sh
+    ;;
+    4 )
+    	source /var/1/docker.sh
+    ;;
     5 )
-        source /var/1/dd.sh
+        
     ;;
     6 )
-        source /var/1/docker.sh
+        
     ;;
     7 )
-       source /var/1/18.sh
+       
     ;;
     8 )
-       source /var/1/19.sh
+       
     ;;
     * )
       clear
