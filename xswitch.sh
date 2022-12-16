@@ -6,7 +6,7 @@ mv ${file1}/xswitch-install /var/xswitch && cd /var/xswitch
 make setup && mv .env .env.beifen
 cp /var/1/.env /var/xswitch/.env
 IP=$(curl ip.sb)
-IP2=$(hostname -I)
+IP2=$(ip route get 1 | awk '{print $7;exit}')
 file=/var/xswitch/.env
 echo -n "-----本机公网IP是："; echo ${IP}
 echo -n "正确请按  y   不正确请按  n  >>>>>>>> "
