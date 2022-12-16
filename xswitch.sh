@@ -1,8 +1,8 @@
 #!/bin/bash
-sudo apt-get update
-sudo apt-get install -y make zip wget || sudo yum install -y make zip wget
+sudo apt-get update && cd /var/
 sudo wget https://xswitch.cn/download/xswitch-install.tar.gz --user xswitch --password password && tar zxvf xswitch-install.tar.gz
-mv xswitch-install /var/xswitch && cd /var/xswitch
+file1=$(pwd)
+mv ${file1}/xswitch-install /var/xswitch && cd /var/xswitch
 make setup && mv .env .env.beifen
 cp /var/1/.env /var/xswitch/.env
 IP=$(curl ip.sb)
