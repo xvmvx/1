@@ -40,9 +40,7 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
         clear
         echo "###########################################"
         echo " 需要在docker-compose环境中运行，请确定已经正确安装"
-        cd /var/1/xswitch
-        chmod +x *
-        source /var/1/xswitch/xswitch.sh
+        source /var/1/xswitch.sh
     ;;
     6 )
         clear
