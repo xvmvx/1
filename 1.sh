@@ -8,6 +8,7 @@ cd /var/1
 echo "########################################"
 xitong=$(cat /etc/issue)
 IP=$(curl ip.sb)
+IP2=$(ip route get 1 | awk '{print $7;exit}')
 CentOS="CentOS"
 VSP="请自行添加"
 server="请自行修改"
