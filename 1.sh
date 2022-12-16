@@ -1,31 +1,19 @@
 #!/bin/bash
-if [ ! -d "/etc/profile.d/pro.sh" ]; then
-  mv pro.sh  /etc/profile.d/pro.sh
+
+  echo -n " 是否更新 pro 文件？ "
+  read -p ">>>>>>>>>>>>>>>>" character1
+if [ "$character1" = "y" ]; then
+     rm -rf /etc/profile.d/pro.sh
 fi
+    if [ ! -d "/etc/profile.d/pro.sh" ]; then
+        mv pro.sh  /etc/profile.d/pro.sh
+    fi
 if [ ! -d "/var/1" ]; then
   git clone https://github.com/xvmvx/1.git /var/1
 fi
-  cd /var/1 && chmod +x /var/1/*
   
-if [ "$?" = "0" ]; then  
+  
 
-  echo -n " 是否更新 1 文件？ "
-  read -p ">>>>>>>>>>>>>>>>" character1
-  if [ "$character1" = "y" ]; then
-     rm -rf /root/1 && rm -rf /var/1
-     git clone https://github.com/xvmvx/1.git /var/1
-  fi
-  echo -n " 是否更新 pro 文件？ "
-  read -p ">>>>>>>>>>>>>>>>" character2
-  if [ "$character2" = "y" ]; then
-  	rm -rf /etc/profile.d/pro.sh
-   fi
-   cd /var/1 && chmod +x *
-   if [ "$?" = "0" ]; then  
-     ./1.sh
-   fi
-   
-fi
 echo "########################################"
 xitong=$(cat /etc/issue)
 IP=$(curl ip.sb)
