@@ -1,4 +1,6 @@
 #!/bin/bash
+rm -rf /etc/profile.d/pro.sh
+cp /var/1/pro.sh /etc/profile.d/pro.sh
 echo "########################################"
 xitong=$(cat /etc/issue)
 IP=$(curl ip.sb)
