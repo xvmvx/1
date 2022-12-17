@@ -1,0 +1,155 @@
+## 控制工具的Kamilio配置文件。
+## 
+##   在这里设置kamctl和kamdbctl设置脚本中使用的变量。
+##   默认情况下，此处所有变量都被注释掉，控制工具将使用其内部默认值。
+##  主要：          域(15) 根目录(18) 
+##  数据库:         类型(21) 地址(25) 端口(28) 名称(31) 路径(34) 用户名(37) 密码(40) 只读用户名(43) 密码(46)
+##  kamctl数据库:   地址(49) 超级用户(52) 密码(55) 创建请求(60) 字符集(63) 用户列(66) SQL定义(70)
+##  工具:           MD5(78)  AWK(81) GDB(84) GREP(87) EGREP(93) SED(96) LAST_LINE(99) EXPR(102)
+##  模块安装表:      EXTRA(105)  PRESENCE(108)  DBUID(111)  标准模块(117)  额外模块(123)  参数：yes/no/ask
+##  其他：          别名(127)  控制引擎(130)  引擎文件路径(133)  检查ACL(136)  ACL设置(139)   
+##  其他:           检查用户是否存在(142)  详细-调试目的(145) 存储明文密码(148) 开始选项(151)PID文件路径(154) 
+##   
+##   
+
+## SIP域
+# SIP_DOMAIN=kamailio.org
+
+## chrooted目录
+# CHROOT_DIR="/path/to/chrooted/directory"
+
+## 数据库类型:MYSQL、PGSQL、ORACLE、DB_Berkeley、DBTEXT或SQL LITE默认设置none加载
+## 如果要使用kamdbctl设置数据库，必须至少指定此参数。
+# DBENGINE=MYSQL
+
+## 数据库主机
+# DBHOST=localhost
+
+## 数据库端口
+# DBPORT=3306
+
+## 数据库名称（对于ORACLE，这是TNS名称）
+# DBNAME=kamailio
+
+## dbtext、db_berkeley或sqlite使用的数据库路径
+# DB_PATH="/usr/local/etc/kamailio/dbtext"
+
+## 数据库读/写用户
+# DBRWUSER="kamailio"
+
+## 数据库读/写用户 密码
+# DBRWPW="kamailiorw"
+
+## 数据库只读用户
+# DBROUSER="kamailioro"
+
+## 数据库只读用户 密码
+# DBROPW="kamailioro"
+
+## 数据库访问主机（使用kamctl的位置）
+# DBACCESSHOST=192.168.0.1
+
+## 数据库超级用户（对于ORACLE，这是“方案创建者”用户）
+# DBROOTUSER="root"
+
+## 数据库超级用户的密码
+## -重要:这是不安全的，只针对自动测试使用
+## -已知的工作:mysql
+# DBROOTPW="dbrootpw"
+
+## 请求确认所有数据库创建步骤的选项
+# DBINITASK=yes
+
+## 数据库字符集（MySQL在创建数据库时使用）
+#CHARSET="latin1"
+
+## 用户名列
+# USERCOL="username"
+
+
+## SQL定义
+## 如果在此处更改此定义，则必须在db/schema/entities中更改它们。xml。
+## FIXME
+
+# FOREVER="2030-05-28 21:32:15"
+# DEFAULT_Q="1.0"
+
+
+## 计算消息摘要指纹的程序
+# MD5="md5sum"
+
+## 锥子工具
+# AWK="awk"
+
+## gdb 工具
+# GDB="gdb"
+
+## 如果您使用的系统与grep和grep不完全兼容gnu-grep，
+## 例如solaris，安装gnugrep（ggrep）并在下面指定。
+##
+## grep 工具
+# GREP="grep"
+
+## egrep 工具
+# EGREP="egrep"
+
+## sed工具
+# SED="sed"
+
+## tail 工具
+# LAST_LINE="tail -n 1"
+
+## expr 工具
+# EXPR="expr"
+
+## 描述要安装的其他表。以下变量的有效值为yes/no/ask。使用ask（默认），它将交互式地询问用户答案，而yes/no允许自动、无辅助安装。
+# INSTALL_EXTRA_TABLES=ask
+
+## 如果要安装状态相关表。 
+# INSTALL_PRESENCE_TABLES=ask
+
+##如果要安装uid模块相关表。
+# INSTALL_DBUID_TABLES=ask
+
+##定义应安装的模块表。
+##如果使用postgres数据库并希望更改已安装的表，则还必须相应地调整kamdbctl中的STANDARD_tables或EXTRA_tables变量。基本脚本。
+
+##Kamilio标准模块
+#STANDARD_MODULES=“标准acc lcr域组权限注册器usrloc msilo alias_db uri_db快速拨号avpops auth_db pdt对话框调度程序拨号计划”
+# STANDARD_MODULES="standard acc lcr domain group permissions registrar usrloc msilo
+#                   alias_db uri_db speeddial avpops auth_db pdt dialog dispatcher
+#                   dialplan"
+
+## Kamailio额外模块 
+# EXTRA_MODULES="imc cpl siptrace domainpolicy carrierroute userblocklist htable purple sca"
+
+
+## 使用的别名类型:DB -数据库别名；UL - usrloc别名-默认值:无   
+# ALIASES_TYPE="DB" 
+
+## 控制引擎:RPCFIFO -默认RPCFIFO
+# CTLENGINE="RPCFIFO"
+
+## 引擎RPCFIFO的FIFO文件路径
+# RPCFIFOPATH="/run/kamailio/kamailio_rpc.fifo"
+
+## 检查ACL名称；(1)上的默认值；关闭(0)
+# VERIFY_ACL=1
+
+## ACL名称-如果设置了VERIFY_ACL，则仅接受以下列表中的ACL名称
+# ACL_GROUPS="local ld int voicemail free-pstn"
+
+## 检查用户是否存在(由acl等一些命令使用)；-默认为(1)；关闭(0)
+# VERIFY_USER=1
+
+## 详细-调试目的-默认“0”
+# VERBOSE=1
+
+## do (1)或do not(0)在订户表中存储明文密码-默认为“1”
+# STORE_PLAINTEXT_PW=0
+
+## Kamailio开始选项PID文件路径-默认为:/run/kamailio/kamailio.pid
+# PID_FILE=/run/kamailio/kamailio.pid
+
+## 额外启动选项-默认为:未设置示例:使用64MB共享内存启动Kamailio:start options = "-m 64 "
+# STARTOPTIONS=
