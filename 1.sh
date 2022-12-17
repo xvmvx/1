@@ -1,7 +1,4 @@
 #!/bin/bash
-     rm -rf /etc/profile.d/pro.sh
-mv pro.sh  /etc/profile.d/pro.sh
-chmod +x /etc/profile.d/pro.sh
 echo "########################################"
 xitong=$(cat /etc/issue)
 IP=$(curl ip.sb)
