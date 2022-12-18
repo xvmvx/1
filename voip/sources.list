@@ -1,0 +1,43 @@
+# deb cdrom:[Debian GNU/Linux 11.0.0 _Bullseye_ - Official amd64 DVD Binary-1 20210814-10:04]/ bullseye contrib main
+
+# deb cdrom:[Debian GNU/Linux 11.0.0 _Bullseye_ - Official amd64 DVD Binary-1 20210814-10:04]/ bullseye contrib main
+
+deb http://security.debian.org/debian-security bullseye-security main contrib
+deb-src http://security.debian.org/debian-security bullseye-security main contrib
+
+# bullseye-updates, to get updates before a point release is made;
+# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
+# A network mirror was not selected during install.  The following entries
+# are provided as examples, but you should amend them as appropriate
+# for your mirror of choice.
+#
+# deb http://deb.debian.org/debian/ bullseye-updates main contrib
+# deb-src http://deb.debian.org/debian/ bullseye-updates main contrib
+
+# aliyun
+deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb https://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+
+# kamailio
+deb     http://deb.kamailio.org/kamailio55 jessie  main
+deb-src http://deb.kamailio.org/kamailio55 jessie  main
+deb     http://deb.kamailio.org/kamailio55 stretch main
+deb-src http://deb.kamailio.org/kamailio55 stretch main
+deb     http://deb.kamailio.org/kamailio55 buster main
+deb-src http://deb.kamailio.org/kamailio55 buster main
+deb     http://deb.kamailio.org/kamailio55 bullseye main
+deb-src http://deb.kamailio.org/kamailio55 bullseye main
+deb     http://deb.kamailio.org/kamailio55 trusty main
+deb-src http://deb.kamailio.org/kamailio55 trusty main
+deb     http://deb.kamailio.org/kamailio55 xenial main
+deb-src http://deb.kamailio.org/kamailio55 xenial main
+deb     http://deb.kamailio.org/kamailio55 bionic main
+deb-src http://deb.kamailio.org/kamailio55 bionic main
+deb     http://deb.kamailio.org/kamailio55 focal main
+deb-src http://deb.kamailio.org/kamailio55 focal main
