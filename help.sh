@@ -222,7 +222,7 @@ read -p "${jian}" menuNumberInput
           w 
         ;;
         2 )
-           id <用户名> # 查看指定用户信息
+           echo "id <用户名> # 查看指定用户信息"
         ;;
         3 )
            last
