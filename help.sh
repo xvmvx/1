@@ -217,7 +217,7 @@ read -p "${jian}" menuNumberInput
         echo "6.查看当前用户的计划任务"
         echo "请选择要执行的操作，返回0号键。退出直接回车即可"
         read -p ">>>>>>>>>>>>>>>>" fenquInput
-        case "fenquInput"
+        case "fenquInput" in:
         1 )
           w 
         ;;
