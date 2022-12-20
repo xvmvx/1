@@ -72,6 +72,7 @@ echo "----- 测试工具： 1.            集成工具   "
 echo "----- 优化加速： 2.            性能检测 "
 echo "----- 系统环境： 3.            DD WARP BBR "
 echo "----- 应用依赖： 4.            Docker 宝塔"
+echo "----- 参考帮助： 5.            help帮助"
 echo "=================================================="
 echo " "
 echo " "
@@ -89,6 +90,9 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInput
     ;;
     4 )
     	source /var/1/docker/docker.sh
+    ;;
+    5 )
+    	source /var/1/help.sh
     ;;
     * )
       clear
