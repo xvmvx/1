@@ -38,6 +38,7 @@ echo "----- 5.进程"
 echo "----- 6.用户"
 echo "----- 7.服务"
 echo "----- 8.程序"
+echo "----- 9.高级"
 echo " "
 echo "请选择要执行的操作，退出直接回车即可"
 read -p "${jian}" menuNumberInput
@@ -266,8 +267,37 @@ read -p "${jian}" menuNumberInput
         echo "查看所有安装的软件包"
         rpm -qa
     ;;
+    9 )
+        echo "1.     修改密码"
+        echo "2.     修改主机名"
+        echo "3.     修改端口"
+       1 ）
+           passwd
+       ;;
+       2 )
+         read -p "输入要修改的主机名称>>>>>>>>>>" hostINPUT
+         sudo hostnamectl set-hostname "${hostINPUT}"
+       ;;
+       3 )
+         read -p "输入要修改的端口号   >>>>>>>>>>   " portINPUT
+         echo "Port  ${portINPUT}" >>/etc/ssh/sshd_config
+         if [ -f /etc/debian_version ]; then
+            iptables -A IN_public_allow -p tcp -m tcp –dport 2250 -m conntrack –ctstate NEW,UNTRACKED -j ACCEPT
+            iptables-save > /etc/iptables.up.rules
+            /etc/init.d/ssh restart
+         elif [ -f /etc/redhat-release ]; then
+            systemctl restart sshd
+         else
+            echo "Unknown"
+            exit;
+         fi
+        ;;
+        0 )
+          source /var/1/help.sh
+        ;;
+    ;;
     0 )
-          source /var/1.sh
+          source /var/1/1.sh
     ;;
         * )
           clear
