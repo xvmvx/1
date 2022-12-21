@@ -92,8 +92,8 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
         echo "                 安装应用                          "
         echo "=================================================="
         echo "-----  1.       Xswitch"
-        echo "-----  2.        "
-        echo "-----  3.        "
+        echo "-----  2.       FuwionPBX"
+        echo "-----  3.       FuwionPBX"
         echo "-----  4.        "
         echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
         echo "##################################################"
@@ -120,7 +120,25 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
             重启frp  systemctl restart frps
             查看frp状态 systemctl status frps"
             systemctl enable frps
-          wget https://github.com/fatedier/frp/releases/download/v0.46.0/frp_0.46.0_linux_amd64.tar.gz
+            wget https://github.com/fatedier/frp/releases/download/v0.46.0/frp_0.46.0_linux_amd64.tar.gz
+        ;;
+        3 )
+          echo "-----  1.       准备安装"
+          echo "-----  2.       官网Debian标准安装"
+          echo "-----  3.       Docker安装"
+          echo "请选择要执行的操作，返回上层请按 0  退出直接回车即可"
+          read -p ">>>>>>>>>>>>>>>>" character
+              if [ "$character" = "1" ]; then
+                echo "本过程执行结束将会重新启动，重新启动后请再次进行安装！"
+                sudo apt-get update && sudo apt-get upgrade
+                sudo apt-get install systemd && sudo apt-get install systemd-sysv
+                sudo apt-get install ca-certificates && reboot
+              elif [ "$character" = "2" ]; then
+                wget -O - https://raw.githubusercontent.com/fusionpbx/fusionpbx-install.sh/master/debian/pre-install.sh | sh;
+                cd /usr/src/fusionpbx-install.sh/debian && ./install.sh
+              elif [ "$character" = "3" ]; then
+                echo "木有！"
+              fi
         ;;
        0 )
             source /var/1/1.sh
