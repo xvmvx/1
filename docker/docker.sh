@@ -70,10 +70,13 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
         4 )
             clear
             echo "###########################################"
-            sudo wget https://go.dev/dl/go1.19.4.linux-amd64.tar.gz
-            sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
-            export PATH=$PATH:/usr/local/go/bin
-            source $HOME/.profile.
+            wget https://storage.googleapis.com/golang/go1.19.4.linux-amd64.tar.gz || wget https://dl.google.com/go/go1.19.4.linux-amd64.tar.gz
+            sudo tar -xzf go1.19.4.linux-amd64.tar.gz -C /usr/local 
+            echo "export GOROOT=/usr/local/go" >> /etc/profile 
+            echo "export GOBIN=$GOROOT/bin" >> /etc/profile 
+            echo "export PATH=$PATH:$GOBIN" >> /etc/profile 
+            echo "export GOPATH=$HOME/gopath" >> /etc/profile 
+            source /etc/profile 
             go version
             if [ "$?" != "0" ]; then
               echo " golang安装成功！"
@@ -106,6 +109,18 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
               echo " 需要在docker-compose环境中运行，正在安装docker，安装完毕请再次运行本程序"
               source /var/1/docker/d.sh
             fi
+        ;;
+        2 )
+            go version
+            
+            yum install systemd || apt install systemd
+            cp  /var/1/frp/frps.service /etc/systemd/system/frps.service
+            systemctl start frps
+            echo "停止frp  systemctl stop frps
+            重启frp  systemctl restart frps
+            查看frp状态 systemctl status frps"
+            systemctl enable frps
+          wget https://github.com/fatedier/frp/releases/download/v0.46.0/frp_0.46.0_linux_amd64.tar.gz
         ;;
        0 )
             source /var/1/1.sh
