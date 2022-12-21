@@ -70,6 +70,7 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
         4 )
             clear
             echo "###########################################"
+            sudo wget https://go.dev/dl/go1.19.4.linux-amd64.tar.gz
             sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
             export PATH=$PATH:/usr/local/go/bin
             source $HOME/.profile.
