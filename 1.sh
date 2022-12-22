@@ -70,9 +70,10 @@ echo "----------          My goodway           -------- "
 echo "##################################################"
 echo "----- 测试工具： 1.            集成工具   "
 echo "----- 优化加速： 2.            性能检测 "
-echo "----- 系统环境： 3.            DD WARP BBR "
-echo "----- 应用依赖： 4.            Docker 宝塔"
-echo "----- 参考帮助： 5.            help帮助"
+echo "----- 系统环境： 3.            DD系统"
+echo "----- 工具依赖： 4.            工具tool"
+echo "----- 应用依赖： 4.            应用exe"
+echo "----- 参考帮助： 5.            帮助help"
 echo "=================================================="
 echo " "
 echo " "
@@ -89,7 +90,7 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInput
     	source /var/1/dd.sh
     ;;
     4 )
-    	source /var/1/docker/docker.sh
+    	source /var/1/tool/tool.sh
     ;;
     5 )
     	source /var/1/help.sh
