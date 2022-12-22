@@ -93,6 +93,9 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInput
     	source /var/1/tool/tool.sh
     ;;
     5 )
+    	source /var/1/exe/exe.sh
+    ;;
+    6 )
     	source /var/1/help.sh
     ;;
     * )
