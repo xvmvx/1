@@ -30,7 +30,7 @@ read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请�
             echo "请选择要执行的操作，返回上层请按 0  退出直接回车即可"
             read -p ">>>>>>>>>>>>>>>>" character
               if [ "$character" = "1" ]; then
-                  source /var/1/docker/d.sh
+                  source /var/1/tool/d.sh
               elif [ "$character" = "2" ]; then
                   sudo apt-get remove docker docker-engine docker.io containerd runc || sudo yum install apt-get
                   sudo apt-get update && sudo apt-get install ca-certificates curl gnupg lsb-release
