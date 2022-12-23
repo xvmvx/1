@@ -57,7 +57,7 @@ case "$installEXE" in
     systemctl start frps && systemctl enable frps
     echo " 已安装，请安装应用客户端"
    elif [  "$sc" = "c" ]; then
-    cp -r /var/1/frp/clien /var/frpc && cd /var/frpc
+    cp -r /var/1/frp/clice /var/frpc && cd /var/frpc
     ./frpc -c ./frpc.ini
     fi
 ;;
