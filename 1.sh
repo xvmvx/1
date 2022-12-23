@@ -18,14 +18,7 @@ IP2=$(ip route get 1 | awk '{print $7;exit}')
 CentOS="CentOS"
 VSP="请自行添加"
 server="请自行修改"
-echo -n "-----本机系统是：" ; echo ${xitong%(Final)*}
-result=$(echo $xitong | grep "${CentOS}")
-if [[ "$result" != "" ]]
-then
-    echo "-----本机IP请使用ifconfig -a 检测"
-else
-    echo -n "-----本机IP是："; echo ${IP}
-fi
+
 
   case "$IP" in
   45.43.57.207)
@@ -71,10 +64,25 @@ fi
    *) 	VSP="请自行添加"
 	server="请自行修改" 
 esac
+echo -n "-----本机系统是：" ; echo ${xitong%(Final)*}
+result=$(echo $xitong | grep "${CentOS}")
+if [[ "$result" != "" ]]
+then
+    echo "-----本机IP请使用ifconfig -a 检测"
+else
+    echo -n "-----本机公网IP是："; echo ${IP}
+    echo -n "-----本机内网IP是："; echo ${IP2}
+fi
 echo -n "-----本机服务商信息:"; echo ${VSP}
 echo -n "-----本机运行服务信息：已启用："; echo ${server}
 echo "=================================================="
-alias fin="find . -name"
+alias fgo="find . -name"
+alias dgo="docker-compose up -d"
+alias 1go="./var/1/1.sh"
+echo "-----本机已启动简化命令如下:"
+echo "-----fgo 查找：fgo “查找内容”:"
+echo "-----dgo：docker-compose up -d 命令"
+echo "-----1go：./1.sh 脚本运行命令"
 echo "=================================================="
 echo "----------          My goodway           -------- "
 echo "##################################################"
@@ -82,8 +90,8 @@ echo "----- 测试工具： 1.            集成工具   "
 echo "----- 优化加速： 2.            性能检测 "
 echo "----- 系统环境： 3.            DD系统"
 echo "----- 工具依赖： 4.            工具tool"
-echo "----- 应用依赖： 4.            应用exe"
-echo "----- 参考帮助： 5.            帮助help"
+echo "----- 应用依赖： 5.            应用exe"
+echo "----- 参考帮助： 6.            帮助help"
 echo "=================================================="
 echo " "
 echo " "
