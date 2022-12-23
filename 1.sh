@@ -1,6 +1,16 @@
 #!/bin/bash
 rm -rf /etc/profile.d/pro.sh
 cp /var/1/pro.sh /etc/profile.d/pro.sh
+logo="$(tput setaf 6)
+   ____                 ___        __
+  / ___| ___   ___   __| \ \      / /_ _ _   _ 
+ | |  _ / _ \ / _ \ / _` |\ \ /\ / / _` | | | |
+ | |_| | (_) | (_) | (_| | \ V  V / (_| | |_| |
+  \____|\___/ \___/ \__,_|  \_/\_/ \__,_|\__, |
+                                         |___/ 
+$(tput sgr0)"
+
+echo "${logo}";
 echo "########################################"
 xitong=$(cat /etc/issue)
 IP=$(curl ip.sb)
