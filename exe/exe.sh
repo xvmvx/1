@@ -5,7 +5,7 @@ echo "                安装应用                          "
 echo "=================================================="
 echo "-----  1.       Xswitch"
 echo "-----  2.       FusionPBX"
-echo "-----  3.       FuwionPBX"
+echo "-----  3.       NextCloud"
 echo "-----  4.        "
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 echo "##################################################"
@@ -39,6 +39,13 @@ case "$installEXE" in
   elif [ "$character" = "3" ]; then
     echo "木有！"
   fi
+;;
+3 )
+  clear
+  echo "###########################################"
+    cp /var/1/exe/nextcloud /var/nextcloud && cd /var/nextcloud
+    docker-compose up -d || echo " 需要在docker-compose环境中运行，正在安装docker，安装完毕请再次运行本程序"
+    source /var/1/tool/docker/d.sh
 ;;
 0 )
   source /var/1/exe/exe.sh
