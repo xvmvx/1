@@ -43,8 +43,9 @@ case "$installEXE" in
 3 )
   clear
   echo "###########################################"
-    cp /var/1/exe/nextcloud /var/nextcloud && cd /var/nextcloud
+    cp -r /var/1/exe/nextcloud /var/nextcloud && cd /var/nextcloud
     docker-compose up -d || echo " 需要在docker-compose环境中运行，正在安装docker，安装完毕请再次运行本程序"
+    sed -i '1 i hello' sample.txt
     source /var/1/tool/docker/d.sh
 ;;
 0 )
