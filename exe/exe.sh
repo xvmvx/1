@@ -6,7 +6,7 @@ echo "=================================================="
 echo "-----  1.       Xswitch"
 echo "-----  2.       FusionPBX"
 echo "-----  3.       NextCloud"
-echo "-----  4.        "
+echo "-----  4.       FRP"
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 echo "##################################################"
 read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请回车>>>>>>>>>" installEXE
@@ -45,8 +45,21 @@ case "$installEXE" in
   echo "###########################################"
     cp -r /var/1/exe/nextcloud /var/nextcloud && cd /var/nextcloud
     docker-compose up -d || echo " 需要在docker-compose环境中运行，正在安装docker，安装完毕请再次运行本程序"
-    sed -i '1 i hello' sample.txt
-    source /var/1/tool/docker/d.sh
+;;
+4 )
+  clear
+  echo "###########################################"
+  read -p "服务端按s，客户端为c" sc
+  if [ "$sc" = "s" ]; then
+    cp -r /var/1/frp/server /var/frps && cd /var/frps
+    yum install systemd || apt install systemd
+    cp -r /var/1/frp/server/frps.service /etc/systemd/system/frps.service
+    systemctl start frps && systemctl enable frps
+    echo " 已安装，请安装应用客户端"
+   elif [  "$sc" = "c" ]; then
+    cp -r /var/1/frp/clien /var/frpc && cd /var/frpc
+    ./frpc -c ./frpc.ini
+    fi
 ;;
 0 )
   source /var/1/exe/exe.sh
