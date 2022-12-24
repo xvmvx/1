@@ -5,7 +5,8 @@ echo "----- 按1 运行行超级工具箱（好像坏了）"
 echo "----- 按2 运行综合工具箱"
 echo "----- 按3 运行彩色BASH工具 "
 echo "----- 按4 运行中文BASH圣经"
-echo "----- 按5 返回上层"
+echo "----- 按5 运行40个脚本主题"
+echo "----- 按0 返回上层"
 echo "=================================================="
 echo " "
 echo " "
@@ -56,6 +57,9 @@ read -p ">>>>>>>>>>>>>>>>" menuNumberInput11
         git clone https://github.com/xvmvx/505_pure-bash-bible-zh_CN.git
         cd 505_pure-bash-bible-zh_CN
         echo "查看并运行即可"
+    ;;
+    5 )
+        source /var/1/40.sh
     ;;
     0 )
         source /var/1/1.sh
