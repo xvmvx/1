@@ -83,11 +83,11 @@ if [[ "$result" != "" ]]
 then
     echo "-----本机IP请使用ifconfig -a 检测"
 else
-    echo -n "-----本机公网IP是："; echo ${IP1}
-    echo -n "-----本机内网IP是："; echo ${IP2}
+    echo -n "-----本机公网IP是："; echo -e "\033[5;43;34m ${IP1} \033[0m"
+    echo -n "-----本机内网IP是：";  echo -e "\033[5;43;34m ${IP2} \033[0m"
 fi
-echo -n "-----本机服务商信息:"; echo ${VSP}
-echo -n "-----本机运行服务信息：已启用："; echo ${server}
+echo -n "-----本机服务商信息:";  echo -e "\033[5;43;34m ${VSP} \033[0m"
+echo -n "-----本机运行服务信息：已启用："; echo -e "\033[5;43;34m  ${server} \033[0m"
 echo "=================================================="
 alias fgo="find . -name"
 alias dgo="docker-compose up -d"
