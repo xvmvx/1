@@ -1,6 +1,5 @@
 #!/bin/bash
-rm -rf /etc/profile.d/pro.sh
-cp /var/1/pro.sh /etc/profile.d/pro.sh
+
 logo="$(tput setaf 6)
    ____                 ___        __
   / ___| ___   ___   __| \ \      / /_ _ _   _ 
@@ -21,15 +20,13 @@ logo1="$(tput setaf 6)
                                                               ███     
 $(tput sgr0)"
 
-echo "${logo}";
-echo "########################################"
+
 xitong=$(cat /etc/issue)
-IP=$(curl ip.sb)
+IP1=$(curl ip.sb)
 IP2=$(ip route get 1 | awk '{print $7;exit}')
 CentOS="CentOS"
 VSP="请自行添加"
 server="请自行修改"
-
 
   case "$IP" in
   45.43.57.207)
@@ -75,13 +72,18 @@ server="请自行修改"
    *) 	VSP="请自行添加"
 	server="请自行修改" 
 esac
+
+
+rm -rf /etc/profile.d/pro.sh && cp /var/1/pro.sh /etc/profile.d/pro.sh
+echo "${logo1}";
+echo "########################################"
 echo -n "-----本机系统是：" ; echo ${xitong%(Final)*}
 result=$(echo $xitong | grep "${CentOS}")
 if [[ "$result" != "" ]]
 then
     echo "-----本机IP请使用ifconfig -a 检测"
 else
-    echo -n "-----本机公网IP是："; echo ${IP}
+    echo -n "-----本机公网IP是："; echo ${IP1}
     echo -n "-----本机内网IP是："; echo ${IP2}
 fi
 echo -n "-----本机服务商信息:"; echo ${VSP}
@@ -94,6 +96,8 @@ echo "-----本机已启动简化命令如下:"
 echo "-----fgo 查找：fgo “查找内容”:"
 echo "-----dgo：docker-compose up -d 命令"
 echo "-----1go：./1.sh 脚本运行命令"
+echo " "
+echo " "
 echo "=================================================="
 echo "----------          My goodway           -------- "
 echo "##################################################"
@@ -104,8 +108,7 @@ echo "----- 工具依赖： 4.            工具tool"
 echo "----- 应用依赖： 5.            应用exe"
 echo "----- 参考帮助： 6.            帮助help"
 echo "=================================================="
-echo " "
-echo " "
+
 echo "请选择要执行的操作，退出直接回车即可"
 read -p ">>>>>>>>>>>>>>>>" menuNumberInput
   case "$menuNumberInput" in
