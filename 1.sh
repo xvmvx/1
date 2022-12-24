@@ -77,7 +77,7 @@ esac
 rm -rf /etc/profile.d/pro.sh && cp /var/1/pro.sh /etc/profile.d/pro.sh
 echo "${logo1}";
 echo "########################################"
-echo -n "-----本机系统是：" ; echo ${xitong%(Final)*}
+echo -n "-----本机系统是：" ; echo -e "\033[5;43;34m ${xitong%(Final)*} \033[0m"
 result=$(echo $xitong | grep "${CentOS}")
 if [[ "$result" != "" ]]
 then
