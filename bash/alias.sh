@@ -6,6 +6,21 @@ alias pago = "netstat -atu" #全部
 alias pugo = "netstat -nupl" #全部UDP
 alias ptgo = "netstat -ntpl" #全部TCP
 echo "alias mls='ls /'" >> ~/.bashrc
+alias redgo='\E[1;31m'  
+alias yellowgo='\E[1;33m' 
+alias bkuego='\E[1;34m'  
+alias zigo = '\033[45;30m'
+alias shango ='"\033[47;30;5m '
+alias 0go='\E[0m'
+
+
+
+alias frpsgo = ' systemctl start frps'
+alias frps+go = ' each 
+#需要使用echo -e
+echo -e  "${RED_COLOR}===david say red color===${RESET}"
+echo -e  "${YELOW_COLOR}===david say yelow color===${RESET}"
+echo -e  "${BLUE_COLOR}===david say green color===${RESET}"
 #生产力 
 alias l.= 'ls -d . .. .git .gitignore .gitmodules .travis.yml --color=auto'
 alias ls= 'ls --color=auto'
