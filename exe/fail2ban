@@ -1,0 +1,5 @@
+sudo yum install epel-release && sudo yum install fail2ban
+sudo systemctl enable fail2ban && sudo systemctl start fail2ban
+
+sudo apt-get update && apt-get upgrade -y && sudo apt-get install fail2ban
+sudo apt-get install sendmail-bin sendmail && sudo systemctl status fail2ban
