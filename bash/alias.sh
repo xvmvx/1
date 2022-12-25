@@ -15,36 +15,21 @@ alias 0go='\E[0m'
 
 
 
-alias frpsgo = ' systemctl start frps'
-alias frps+go = ' each 
-#需要使用echo -e
-echo -e  "${RED_COLOR}===david say red color===${RESET}"
-echo -e  "${YELOW_COLOR}===david say yelow color===${RESET}"
-echo -e  "${BLUE_COLOR}===david say green color===${RESET}"
-#生产力 
+
+
+# 文件 
 alias l.= 'ls -d . .. .git .gitignore .gitmodules .travis.yml --color=auto'
 alias ls= 'ls --color=auto'
 alias ll= 'ls --color -al'
 alias ..= 'cd ..'
 alias ...='cd ../..'
 alias c="clear"
-# grep 纯文本文件中搜索匹配正则表达式
-alias ggo='grep --color=auto'
-alias eggo = 'egrep --color=auto'
-alias fggo = 'fgrep --color=auto'
 # 创建并进入
 gomcd() { mkdir -p "$1"; cd "$1";}
 # 进入并打开
 gocls() { cd "$1"; ls;}
 # 备份
 goback() { cp "$1"{,.bak};}
-gomd5() { md5sum "$1" | grep "$2";}
-alias makescript="fc -rnl | head -1 >"
-# 强密码
-alias psdgo="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
-# 历史
-alias histggo="history | grep"
-
 # 解压
 gotra() {
     if [ -f $1 ] ; then
@@ -66,6 +51,34 @@ gotra() {
          echo "'$1' is not a valid file"
      fi
 }
+
+
+
+
+
+
+
+alias frpsgo = ' systemctl start frps'
+alias frps+go = ' each 
+#需要使用echo -e
+echo -e  "${RED_COLOR}===david say red color===${RESET}"
+echo -e  "${YELOW_COLOR}===david say yelow color===${RESET}"
+echo -e  "${BLUE_COLOR}===david say green color===${RESET}"
+#生产力 
+
+# grep 纯文本文件中搜索匹配正则表达式
+alias ggo='grep --color=auto'
+alias eggo = 'egrep --color=auto'
+alias fggo = 'fgrep --color=auto'
+
+gomd5() { md5sum "$1" | grep "$2";}
+alias makescript="fc -rnl | head -1 >"
+# 强密码
+alias psdgo="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
+# 历史
+alias histggo="history | grep"
+
+
 
 #系统信息 
 # 磁盘信息
