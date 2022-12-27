@@ -41,7 +41,7 @@ CentOS="CentOS"
 VSP="请自行添加"
 server="请自行修改"
 
-  case "$IP" in
+  case "$IP1" in
   45.43.57.207)
   	VSP="UCLOUD:chenlang1940@163.com:Ab123456."
 	server="PHP+bt+昊昊.中国+com--x.com"
@@ -102,27 +102,17 @@ else
 fi
 blue -n "-----本机服务商信息:"; green "${VSP}"
 blue -n "-----本机服务已启用：";green "${server}"
-red "=================================================="
-alias fgo="find . -name"
-alias dgo="docker-compose up -d"
-alias 1go="./var/1/1.sh"
-echo "-----本机已启动简化命令如下:"
-echo "-----fgo 查找：fgo “查找内容”:"
-echo "-----dgo：docker-compose up -d 命令"
-echo "-----1go：./1.sh 脚本运行命令"
+yellow "====================================="
+yellow "----------     My goodway    --------"
+yellow "====================================="
 echo " "
 echo " "
-echo "=================================================="
-echo "----------          My goodway           -------- "
-echo "##################################################"
-echo "----- 测试工具： 1.            集成工具   "
-echo "----- 优化加速： 2.            性能检测 "
-echo "----- 系统环境： 3.            DD系统"
-echo "----- 工具依赖： 4.            工具tool"
-echo "----- 应用依赖： 5.            应用exe"
-echo "----- 参考帮助： 6.            帮助help"
-echo "=================================================="
-
+green "----- 测试工具： 1.            集成工具   "
+green "----- 优化加速： 2.            性能检测 "
+green "----- 系统环境： 3.            DD系统"
+green "----- 工具依赖： 4.            工具tool"
+green "----- 应用依赖： 5.            应用exe"
+green "----- 参考帮助： 6.            帮助help"
 echo "请选择要执行的操作，退出直接回车即可"
 read -p ">>>>>>>>>>>>>>>>" menuNumberInput
   case "$menuNumberInput" in
