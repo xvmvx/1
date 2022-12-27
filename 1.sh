@@ -94,14 +94,14 @@ rm -rf /etc/profile.d/profile.sh
 cp /var/1/profile.sh /etc/profile.d/profile.sh
 yellow "${logo1}"
 red "########################################"
-bule -n "-----本机系统是：" ; green "${xitong%(Final)*}"
+blue "-----本机系统是：" ; green "${xitong%(Final)*}"
 result=$(echo $xitong | grep "${CentOS}")
 if [[ "$result" != "" ]]
 then
     green "-----本机IP请使用ifconfig -a 检测"
 else
-    blue -n "-----本机公网IP是："; green "${IP1}"
-    blue -n "-----本机内网IP是："; green "${IP2}"
+    blue "-----本机公网IP是："; green "${IP1}"
+    blue "-----本机内网IP是："; green "${IP2}"
 fi
 blue -n "-----本机服务商信息:"; green "${VSP}"
 blue -n "-----本机服务已启用：";green "${server}"
