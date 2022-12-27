@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /
 FILE=/var/1
 if [ -e "$FILE" ]; then
     echo "$FILE 已经存在，是否更新？"
