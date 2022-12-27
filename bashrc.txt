@@ -1,0 +1,85 @@
+#!/bin/bash
+# 文件 
+alias l.='ls -d . .. .git .gitignore .gitmodules .travis.yml --color=auto'
+alias ll='ls --color -al'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias cl='clear'
+
+
+b() { iptables -I INPUT -s "$1"; -j DROP;}
+c() { cd "$1"; ls;}   # 进入并打开
+alias d='docker-compose up -d' #运行docker-compose
+alias f='find / -name'  # + 文件名 查询文件是否存在
+alias l='ls --color=auto'
+m() { mkdir -p "$1"; cd "$1";}  # 创建并进入
+
+# 解压
+t() {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+alias v='vim docker-compose.yml'
+
+alias kxitong='cat /etc/redhat-release' # 查询系统
+alias kyingpan='mount | column -t' # 磁盘信息
+alias kneicun='free -m -l -t'  # 剩余内存
+alias kjincheng='ps aux | grep'  # 进程ID
+alias kduankou='netstat -tulanp'  # 活动端口
+alias kip='curl ifconfig.me' # 查公网IP
+alias kip2='curl ifconfig.me' # 查公网IP2
+alias kzhuji='curl ifconfig.me/host' # 查主机名
+alias k10cpu='ps aux|head -1;ps aux|sort -rn -k +3|head'  #最耗CPU
+alias k10jc='ps aux|head -1;ps aux|sort -rn -k +4|head'
+alias klishi='history | grep'  #历史
+alias kwljc='lsof -P -i -n'  # 连接到网络的进程
+
+alias ksydk='netstat -atu'  # 使用端口
+alias kudpdk='netstat -nupl'  # 使用端口UDP
+alias ktcpdk='netstat -ntpl'  # 使用端口TCP
+
+alias g='git clone https://github.com/xvmvx/1.git /var/1'
+alias upgo='sudo apt-get update && sudo apt-get upgrade'
+alias hhh='iptables -I INPUT -s "$1" -j DROP'
+# grep 纯文本文件中搜索匹配正则表达式
+alias ggo='grep --color=auto'
+alias eggo='egrep --color=auto'
+alias fggo='fgrep --color=auto'
+
+# 备份
+back() { cp "$1"{,.bak};}
+
+
+
+
+alias cdk='netstat -tln | grep'  #  + 端口值  查看是否已使用
+alias wjtree='ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'' # 树状文件
+
+# 文件位置？？？
+gwj(){ du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", $1>=2**30? ($1/2**30, "G"): $1>=2**20? ($1/2**20, "M"): $1>=2**10? ($1/2**10, "K"): ($1, "")}e';}
+
+
+
+alias ins_do='curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh'  #安装docker
+alias ins_do1='curl -sSL https://get.docker.com/ | sh'
+alias ins_do2='curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -'
+alias ins_do3='curl -sSL https://get.daocloud.io/docker | sh'
+alias ins_dc='sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose'
+alias ins_dc1='sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'
+alias ins_dc2='curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod a+x /usr/local/bin/docker-compose'
