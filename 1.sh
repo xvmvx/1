@@ -85,13 +85,13 @@ server="请自行修改"
    *) 	VSP="请自行添加"
 	server="请自行修改" 
 esac
-
+cd /
 rm -rf ~/.bashrc 
 cp /var/1/bashrc.txt ~/.bashrc
 source ~/.bashrc 
 clear
-rm -rf /etc/profile.d/pro.sh 
-cp /var/1/pro.sh /etc/profile.d/pro.sh
+rm -rf /etc/profile.d/profile.sh 
+cp /var/1/profile.sh /etc/profile.d/profile.sh
 yellow "${logo1}"
 red "########################################"
 bule -n "-----本机系统是：" ; green "${xitong%(Final)*}"
