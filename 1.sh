@@ -103,8 +103,8 @@ else
     blue "-----本机公网IP是："; green "${IP1}"
     blue "-----本机内网IP是："; green "${IP2}"
 fi
-blue -n "-----本机服务商信息:"; green "${VSP}"
-blue -n "-----本机服务已启用：";green "${server}"
+blue "-----本机服务商信息:"; green "${VSP}"
+blue "-----本机服务已启用：";green "${server}"
 yellow "====================================="
 yellow "----------     My goodway    --------"
 yellow "====================================="
