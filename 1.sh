@@ -1,4 +1,17 @@
 #!/bin/bash
+red(){
+    echo -e "\033[31m\033[01m$1\033[0m"
+}
+green(){
+    echo -e "\033[32m\033[01m$1\033[0m"
+}
+yellow(){
+    echo -e "\033[33m\033[01m$1\033[0m"
+}
+blue(){
+    echo -e "\033[34m\033[01m$1\033[0m"
+}
+
 
 logo="$(tput setaf 6)
    ____                 ___        __
@@ -73,22 +86,23 @@ server="请自行修改"
 	server="请自行修改" 
 esac
 
-
+rm -rf ~/.bashrc && cp /var/1/bashrc.txt ~/.bashrc
+source ~/.bashrc && clear
 rm -rf /etc/profile.d/pro.sh && cp /var/1/pro.sh /etc/profile.d/pro.sh
-echo "${logo1}";
-echo "########################################"
-echo -n "-----本机系统是：" ; echo -e "\033[5;43;34m ${xitong%(Final)*} \033[0m"
+yellow "${logo1}"
+red "########################################"
+bule -n "-----本机系统是：" ; green "${xitong%(Final)*}"
 result=$(echo $xitong | grep "${CentOS}")
 if [[ "$result" != "" ]]
 then
-    echo "-----本机IP请使用ifconfig -a 检测"
+    green "-----本机IP请使用ifconfig -a 检测"
 else
-    echo -n "-----本机公网IP是："; echo -e "\033[5;43;34m ${IP1} \033[0m"
-    echo -n "-----本机内网IP是：";  echo -e "\033[5;43;34m ${IP2} \033[0m"
+    blue -n "-----本机公网IP是："; green "${IP1}"
+    blue -n "-----本机内网IP是："; green "${IP2}"
 fi
-echo -n "-----本机服务商信息:";  echo -e "\033[5;43;34m ${VSP} \033[0m"
-echo -n "-----本机运行服务信息：已启用："; echo -e "\033[5;43;34m  ${server} \033[0m"
-echo "=================================================="
+blue -n "-----本机服务商信息:"; green "${VSP}"
+blue -n "-----本机服务已启用：";green "${server}"
+red "=================================================="
 alias fgo="find . -name"
 alias dgo="docker-compose up -d"
 alias 1go="./var/1/1.sh"
