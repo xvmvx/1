@@ -7,6 +7,8 @@ echo "-----  1.       Xswitch"
 echo "-----  2.       FusionPBX"
 echo "-----  3.       NextCloud"
 echo "-----  4.       FRP"
+echo "-----  5.       npm"
+
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 echo "##################################################"
 read -p "按照提示输入正确的数字  返回上层请按 0  ，退出请回车>>>>>>>>>" installEXE
@@ -60,6 +62,10 @@ case "$installEXE" in
     cp -r /var/1/frp/clice /var/frpc && cd /var/frpc
     ./frpc -c ./frpc.ini
     fi
+;;
+5 )
+  curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+  sudo apt-get install -y nodejs
 ;;
 0 )
   source /var/1/exe/exe.sh
