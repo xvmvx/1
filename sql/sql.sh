@@ -24,7 +24,7 @@ MYPASSWORD="Guwei888"
         echo "将安装到 /docker/sql文件夹内，确定按  y，按其他键重新输入安装位置"
         read -p ">>>>>>>>>>>>>>>>" character
         if [ "$character" = "y" ]; then
-           cd /docker/sql/
+           cd / && cd/docker/sql/
         else
             read -p "输入完整的文件路径：" file1
             MYFILE=file1
@@ -93,7 +93,7 @@ read -p "退出输入“0”   >>>>>       " menuNumberInput
                 - 62:80
               environment:
                 - PMA_PORT=53306
-        EOF
+EOF
     ;;
     2 )
         MYPORT=54320
@@ -140,7 +140,7 @@ read -p "退出输入“0”   >>>>>       " menuNumberInput
         volumes:
           local_pgdata:
           pgadmin-data:
-        EOF
+EOF
     ;;
     3 ) 
       MYPORT=53306
@@ -164,10 +164,14 @@ services:
       - ./data:/var/lib/mysql
       - ./log:/var/log/mysql
       - ./conf/my.cnf:/etc/mysql/my.cnf
-        EOF
+EOF
         docker exec -it mariadb1 bash
         cp /etc/mysql/my.cnf  /docker/sql/conf/my.cnf
+ 
     ;;
+        * )
+      clear
+      esac
         blue "数据库默认信息："
         blue "数据库名称："; green "${MYNAME}"
         blue "数据库链接："; green "${MYUSER}"
