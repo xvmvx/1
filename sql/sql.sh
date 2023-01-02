@@ -144,31 +144,29 @@ read -p "退出输入“0”   >>>>>       " menuNumberInput
     ;;
     3 ) 
       MYPORT=53306
-      MYNAME="goodway"
-      docker run --detach --name ${MYNAME} --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
-      mkdir -p /docker/mariadb/{config,data,log}
-      chmod -R 777 /docker/mariadb
+      mkdir -p /docker/sql/{config,data,log}
+      chmod -R 777 /docker/sql
       cat >>docker-compose.yml<<EOF
-        version: '3.1'
-        services:
-          mariadb:
-            image: mariadb:10.5.5
-            container_name: "mariadb1"
-            restart: always
-            environment:
-              MYSQL_USER: "goodway"
-              MYSQL_PASSWORD: "Guwei888"
-              MYSQL_ROOT_PASSWORD: "Guwei888"
-              TZ: "Asia/Shanghai"
-            ports:
-              - "53306:3306"
-            volumes:
-              - ./data:/var/lib/mysql
-              - ./log:/var/log/mysql
-              - ./conf/my.cnf:/etc/mysql/my.cnf
+version: "3"
+services:
+  mariadb:
+    image: mariadb:10.5.5
+    container_name: "goodway"
+    restart: always
+    environment:
+      MYSQL_USER: "goodway"
+      MYSQL_PASSWORD: "Guwei888"
+      MYSQL_ROOT_PASSWORD: "Guwei888"
+      TZ: "Asia/Shanghai"
+    ports:
+      - "53306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./log:/var/log/mysql
+      - ./conf/my.cnf:/etc/mysql/my.cnf
         EOF
         docker exec -it mariadb1 bash
-        cp /etc/mysql/my.cnf 到 /docker/mariadb/conf/my.cnf
+        cp /etc/mysql/my.cnf  /docker/sql/conf/my.cnf
     ;;
         blue "数据库默认信息："
         blue "数据库名称："; green "${MYNAME}"
@@ -178,4 +176,6 @@ read -p "退出输入“0”   >>>>>       " menuNumberInput
         blue "数据库密码："; green "${MYPASSWORD}"
         echo "开始安装............."
         docker-compose up -d
-        
+
+
+
