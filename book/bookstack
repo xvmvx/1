@@ -1,0 +1,18 @@
+version: "2"
+services:
+  bookstack:
+    image: linuxserver/bookstack:22.11.1
+    container_name: bookstack
+    restart: unless-stopped
+    environment:
+      - PUID # 获取应用程序/文件所有权的用户的UID
+      - PGID # 获取应用程序/文件所有权的用户的GID
+      - DB_USER # 数据库用户
+      - DB_PASS # 数据库密码
+      - DB_HOST # 数据库主机
+      - DB_DATABASE # 要使用的数据库
+      - APP_URL # 将在其上访问应用程序的URL（反向代理的正确操作需要）
+    volumes:
+      - ./docker/bookstack/config:/config # 任何上载数据的位置
+    ports:
+      - 80:80/tcp # Web UI端口
