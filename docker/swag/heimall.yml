@@ -1,19 +1,39 @@
 
 version: "2.1"
 services:
-  heimdall:
-    image: lscr.io/linuxserver/heimdall
-    container_name: heimdall
+
+  nextcloud:
+    image: lscr.io/linuxserver/nextcloud
+    container_name: nextcloud
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=China/Shanghai
     volumes:
-      - /docker/heimdall:/config
+      - /docker/nextcloud/config:/config
+      - /docker/nextcloud/data:/data
+    depends_on:
+      - mariadb
     restart: unless-stopped
+  mariadb:
+    image: lscr.io/linuxserver/mariadb
+    container_name: mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=Guwei888
+      - TZ=China/Shanghai
+      - MYSQL_DATABASE=NC_db
+      - MYSQL_DATABASE=WP_db
+      - MYSQL_USER=goodway
+      - MYSQL_PASSWORD=Guwei888
+    volumes:
+      - /docker/mariadb:/config
+    restart: unless-stopped
+
   swag:
     image: lscr.io/linuxserver/swag
-    container_name: swag
+    container_name: swag1
     cap_add:
       - NET_ADMIN
     environment:
@@ -29,4 +49,45 @@ services:
     ports:
       - 443:443
       - 80:80
+    depends_on:
+      - mariadb
     restart: unless-stopped
+    
+  plex:
+    image: lscr.io/linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+    volumes:
+      - /docker/plex:/config
+      - /docker/plex:/data/tvshows
+      - /docker/plex:/data/movies
+    restart: unless-stopped
+    
+  heimdall:
+    image: lscr.io/linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=China/Shanghai
+    volumes:
+      - /docker/heimdall:/config
+    restart: unless-stopped
+  
+  ombi:
+    image: lscr.io/linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=China/Shanghai
+    volumes:
+      - /docker/ombi:/config
+    ports:
+      - 81:3579
+    restart: unless-stopped
+    
