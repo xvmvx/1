@@ -1,0 +1,33 @@
+# 密码访问 docker exec -it swag htpasswd -c /config/nginx/.htpasswd <username>
+# 默认站点 /config/nginx/site-confs/default.conf
+# 反向代理 /config/nginx/proxy_confs下的README.md文件
+# 证书使用 yml配置文件  -v /path-to-swag-config:/swag-ssl
+# f2b   /config/fail2ban/jail.local  
+# 可以使用 docker exec -it swag fail2ban-client status （可加：<jail name>）（或 set <jail name> unbanip <IP>）
+version: "2.1"
+services:
+  swag:
+    image: lscr.io/linuxserver/swag
+    container_name: swag
+    cap_add:  #NET_ADMINfail2ban修改iptables是必需的
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=China/Shanghai
+      - URL=95118.duckdns.org
+      - SUBDOMAINS=www,
+      - VALIDATION=http
+      - CERTPROVIDER= zerossl #可选
+      - DNSPLUGIN=cloudflare #可选
+      - DUCKDNSTOKEN=0ae2417b-8e8b-48b3-a782-8ccc4851cd90 #optional
+      - EMAIL=wing.999@icloud.com #可选
+      - ONLY_SUBDOMAINS=false #可选
+      - EXTRA_DOMAINS=<extradomains> #可选域外（_D）
+      - STAGING=false #可选
+    volumes:
+      - /path/to/appdata/config:/config
+    ports:
+      - 443:443
+      - 80:80 #可选
+    restart: unless-stopped
