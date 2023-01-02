@@ -1,0 +1,32 @@
+
+version: "2.1"
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=China/Shanghai
+    volumes:
+      - /docker/heimdall:/config
+    restart: unless-stopped
+  swag:
+    image: lscr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=China/Shanghai
+      - URL=95118.works
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - DNSPLUGIN=cloudflare
+    volumes:
+      - /docker/swag:/config
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
