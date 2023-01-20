@@ -1,0 +1,54 @@
+#!/bin/bash
+echo "创建用户名为：root，密码为：Guwei888的mariadb数据库，端口映射到13307"
+docker run -d \
+  --name mariadb \
+  -v /dockers/mariadb/data/:/var/lib/mysql/ \
+  -e MYSQL_ROOT_PASSWORD=Guwei888 \
+  -p 13307:3306 \
+mariadb
+echo "创建mariadb数据库和管理web phpmyadmin， 地址为：ip：13308，用户名为：root，密码为：Guwei888"
+docker run -d \
+  --name phpmyadmin \
+  -e PMA_HOST=mariadb \
+  -p 13308:80 \
+  -h phpmyadmin \
+  --restart=always \
+  --link mariadb \
+  phpmyadmin/phpmyadmin:latest
+  echo "在web页面（左侧）新建数据库wordpresslink，成功后在SQL通过以下命令添加新用户goodway，密码Guwei888"
+  echo "grant all privileges on wordpresslink.* to goodway@'%' identified by 'Guwei888'；
+  flush privileges;"
+  echo "确认成功后输入y开始安装wordpress"
+  read -p "确认成功后输入y开始安装wordpress" inWord
+  if $inWord = "y" ;then
+  
+  docker run -d \
+--name wordpresslink \
+-p 18000:80 \
+-e WORDPRESS_DB_HOST=128.199.197.26:13307 \
+-e WORDPRESS_DB_NAME=wordpresslink \
+-e WORDPRESS_DB_USER=goodway \
+-e WORDPRESS_DB_PASSWORD=Guwei888 \
+-v /dockers/wordpress/wordpresslink/html:/var/www/html \
+-v /dockers/wordpress/wordpresslink/config/:/config \
+wordpress
+echo "wordpress安装成功，请在浏览器器打开 IP：18000  继续执行"
+fi
+echo "修改hacc文件"
+mv /dockers/wordpress/wordpresslink/html/.htaccess /dockers/wordpress/wordpresslink/html/.htaccess.copy
+cat > /dockers/wordpress/wordpresslink/html/.htaccess << EOF 
+# LoadModule rewrite_module     modules/mod_rewrite.so
+
+# Apache 规则
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+EOF
+echo "前往以下地址下载zip压缩文件"
+echo "https://github.com/owen0o0/WebStack"
+echo "在wordpress  外观-> 主题 -> 上传主题  选择刚刚下载的WebStacj.zip  安装主题 -> 启动"
